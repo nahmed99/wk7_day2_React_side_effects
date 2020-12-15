@@ -11,13 +11,23 @@ function App() {
   const [number, setNumber] = useState(0);
   const [numberLarge, setNumberLarge] = useState(0);
 
-  useEffect(() => {
+
+/* Compare the code below with the (useEffect) code below that...
+    // useEffect takes two arguments: func and an array of dependencies useEffect(() => {
     // This useEffect is triggered whenever any of the states 
     // change - one trigger for each state that changes (i.e., 
     // for each time a 'setSomething' is called, e.g., setNumber and setNumberLarge below).
     console.log("All of the state has changed");
     setNumberLarge(number * 2);
   });
+*/
+
+  // useEffect takes two arguments: func and an array of dependencies
+  useEffect(() => {
+    // This useEffect is only triggered whenever the state of number changes - as SPECIFIED in the second argument - the array at the end.
+    console.log("All of the state has changed");
+    setNumberLarge(number * 2);
+  }, [number]); // multiple entries in the array means that if any of those states changes, then this useEffect will be triggered.
 
 
 
